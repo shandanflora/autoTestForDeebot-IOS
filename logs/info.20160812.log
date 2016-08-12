@@ -1,0 +1,17 @@
+2016-08-12 09:32:47,012 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 09:50:17,029 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 10:12:50,206 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 10:26:33,444 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 10:48:48,851 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 11:00:27,270 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 11:07:49,356 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 11:37:34,618 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 11:45:52,173 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 13:27:22,769 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 13:39:27,330 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 13:41:01,870 -- com.ecovacs.test.activity.PersonalCenterActivity             [ 53] -- ****Fun:loadPersonalCenter****user id: 105484
+2016-08-12 13:41:17,858 -- com.ecovacs.test.activity.MyProfileActivity                  [ 55] -- ****getPhoneNumber****phone number: 13222217831
+2016-08-12 13:50:01,110 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 14:02:08,816 -- com.ecovacs.test.activity.MainPageActivity                   [ 73] -- ****DeviceInTableView****The text of device is: DG710 (DEEBOT)
+2016-08-12 14:03:42,249 -- com.ecovacs.test.activity.PersonalCenterActivity             [ 53] -- ****Fun:loadPersonalCenter****user id: 105484
+2016-08-12 14:03:58,241 -- com.ecovacs.test.activity.MyProfileActivity                  [ 55] -- ****getPhoneNumber****phone number: 13222217831

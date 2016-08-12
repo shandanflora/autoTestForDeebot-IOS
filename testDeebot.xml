@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- allow-return-values 默认值为FALSE,表示返回值将被忽略 -->
+<suite name="framework_testng">
+    <test verbose="2" preserve-order="true" name="TestMethods">
+        <classes>
+            <class name="com.ecovacs.test.TestDEEBOT">
+                <methods>
+                    <include name="testLogin"></include>
+                    <include name="testLoadControllActivity"></include>
+                    <exclude name="testStandardAutoClean"></exclude>
+                    <exclude name="testStandardSingleClean"></exclude>
+                    <exclude name="testStandardBorderClean"></exclude>
+                    <exclude name="testStandardFixedClean"></exclude>
+                    <exclude name="testStandardChargeClean"></exclude>
+                    <include name="testManualCleanTop"></include>
+                    <exclude name="testManualCleanBottom"></exclude>
+                    <exclude name="testManualCleanLeft"></exclude>
+                    <exclude name="testManualCleanRight"></exclude>
+                    <include name="testLogout"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

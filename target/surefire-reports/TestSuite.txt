@@ -1,0 +1,56 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 172.171 sec <<< FAILURE! - in TestSuite
+testManualCleanTop(com.ecovacs.test.TestDEEBOT)  Time elapsed: 1.288 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.xpath: //UIAApplication[1]/UIAWindow[1]/UIAButton[3]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'ecosqadeMacBook-Pro.local', ip: '192.168.3.8', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.5', java.version: '1.8.0_91'
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:185)
+	at io.appium.java_client.pagefactory.ElementInterceptor.intercept(ElementInterceptor.java:46)
+	at io.appium.java_client.ios.IOSElement$$EnhancerByCGLIB$$c4fcf52e.click(<generated>)
+	at com.ecovacs.test.activity.XianBotUIControllerActivity.manualCleanTop(XianBotUIControllerActivity.java:173)
+	at com.ecovacs.test.HandleDEEBOT.manualCleanTop(HandleDEEBOT.java:99)
+	at com.ecovacs.test.TestDEEBOT.testManualCleanTop(TestDEEBOT.java:74)
+
+testManualCleanBottom(com.ecovacs.test.TestDEEBOT)  Time elapsed: 1.383 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.xpath: //UIAApplication[1]/UIAWindow[1]/UIAButton[6]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'ecosqadeMacBook-Pro.local', ip: '192.168.3.8', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.5', java.version: '1.8.0_91'
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:185)
+	at io.appium.java_client.pagefactory.ElementInterceptor.intercept(ElementInterceptor.java:46)
+	at io.appium.java_client.ios.IOSElement$$EnhancerByCGLIB$$c4fcf52e.click(<generated>)
+	at com.ecovacs.test.activity.XianBotUIControllerActivity.manualCleanBottom(XianBotUIControllerActivity.java:179)
+	at com.ecovacs.test.HandleDEEBOT.manualCleanBottom(HandleDEEBOT.java:103)
+	at com.ecovacs.test.TestDEEBOT.testManualCleanBottom(TestDEEBOT.java:79)
+
+testManualCleanLeft(com.ecovacs.test.TestDEEBOT)  Time elapsed: 1.522 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.xpath: //UIAApplication[1]/UIAWindow[1]/UIAButton[4]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'ecosqadeMacBook-Pro.local', ip: '192.168.3.8', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.5', java.version: '1.8.0_91'
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:185)
+	at io.appium.java_client.pagefactory.ElementInterceptor.intercept(ElementInterceptor.java:46)
+	at io.appium.java_client.ios.IOSElement$$EnhancerByCGLIB$$c4fcf52e.click(<generated>)
+	at com.ecovacs.test.activity.XianBotUIControllerActivity.manualCleanLeft(XianBotUIControllerActivity.java:185)
+	at com.ecovacs.test.HandleDEEBOT.manualCleanLeft(HandleDEEBOT.java:107)
+	at com.ecovacs.test.TestDEEBOT.testManualCleanLeft(TestDEEBOT.java:84)
+
+testManualCleanRight(com.ecovacs.test.TestDEEBOT)  Time elapsed: 1.519 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.xpath: //UIAApplication[1]/UIAWindow[1]/UIAButton[5]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'ecosqadeMacBook-Pro.local', ip: '192.168.3.8', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.5', java.version: '1.8.0_91'
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:185)
+	at io.appium.java_client.pagefactory.ElementInterceptor.intercept(ElementInterceptor.java:46)
+	at io.appium.java_client.ios.IOSElement$$EnhancerByCGLIB$$c4fcf52e.click(<generated>)
+	at com.ecovacs.test.activity.XianBotUIControllerActivity.manualCleanRight(XianBotUIControllerActivity.java:191)
+	at com.ecovacs.test.HandleDEEBOT.manualCleanRight(HandleDEEBOT.java:111)
+	at com.ecovacs.test.TestDEEBOT.testManualCleanRight(TestDEEBOT.java:89)
+

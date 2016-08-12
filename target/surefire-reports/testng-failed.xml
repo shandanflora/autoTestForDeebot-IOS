@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [framework_testng]">
+  <test verbose="2" name="TestMethods">
+    <classes>
+      <class name="com.ecovacs.test.TestDEEBOT">
+        <methods>
+          <include name="testLogin"/>
+          <include name="testLoadControllActivity"/>
+          <include name="testManualCleanTop"/>
+          <include name="testManualCleanBottom"/>
+          <include name="testManualCleanLeft"/>
+          <include name="testManualCleanRight"/>
+          <include name="testLogout"/>
+          <exclude name="testStandardAutoClean"/>
+          <exclude name="testStandardSingleClean"/>
+          <exclude name="testStandardBorderClean"/>
+          <exclude name="testStandardFixedClean"/>
+          <exclude name="testStandardChargeClean"/>
+        </methods>
+      </class> <!-- com.ecovacs.test.TestDEEBOT -->
+    </classes>
+  </test> <!-- TestMethods -->
+  <test name="TestMethods(failed)">
+    <classes>
+      <class name="com.ecovacs.test.TestDEEBOT">
+        <methods>
+          <include name="testManualCleanLeft"/>
+          <include name="setUp"/>
+          <include name="testManualCleanBottom"/>
+          <include name="tearDown"/>
+          <include name="testManualCleanRight"/>
+          <include name="testManualCleanTop"/>
+        </methods>
+      </class> <!-- com.ecovacs.test.TestDEEBOT -->
+    </classes>
+  </test> <!-- TestMethods(failed) -->
+</suite> <!-- Failed suite [framework_testng] -->
