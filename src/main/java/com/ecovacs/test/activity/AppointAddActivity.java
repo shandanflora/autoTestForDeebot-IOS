@@ -1,19 +1,18 @@
 package com.ecovacs.test.activity;
 
 import com.ecovacs.test.common.Common;
-import com.ecovacs.test.common.PropertyData;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,12 +29,11 @@ public class AppointAddActivity {
     private MobileElement btnBack = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]")
     private MobileElement btnConfirm = null;
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAStaticText[1]")
-    private MobileElement txtTitle = null;
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]")
+
+    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]")
     private MobileElement cellRepeat = null;
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
-    private MobileElement tableVeiw = null;
+    /*@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
+    private MobileElement tableVeiw = null;*/
 
     public static AppointAddActivity getInstance(){
         if(appointAddActivity == null){
@@ -62,15 +60,7 @@ public class AppointAddActivity {
             }
         }*/
         cellRepeat.click();
-        try {
-            if(txtTitle.getText().trim().equals(PropertyData.getProperty("appointAddTile"))){
-                return true;
-            }
-        }catch (NoSuchElementException e){
-            e.printStackTrace();
-            return false;
-        }
-        return false;
+        return AppointRepeatActivity.getInstance().loadAppointRepeatActivity();
     }
 
     public void clickConfirm(){
@@ -95,41 +85,57 @@ public class AppointAddActivity {
         return strPeriod;
     }*/
 
-    public boolean selectTimeAppoint(String strHour, String strMin){
-        List<IOSElement> list = new ArrayList<IOSElement>();
+    private void waitForListSize(){
+        List<IOSElement> list;
         int iLoop = 0;
-        while(list.size() == 0){
+        do {
+            list = driver.findElementsByClassName("UIAPickerWheel");
             Common.getInstance().waitForSencond(1000);
+            iLoop++;
             if(iLoop > 20){
                 break;
             }
-            list = driver.findElementsByClassName("UIAPickerWheel");
-            iLoop++;
-        }
-        System.out.println("The size of table view is:" + Integer.valueOf(list.size()));
+            System.out.println("****waitForListSize****try time: " + Integer.toString(iLoop));
+            System.out.println("****waitForListSize****list size: " + Integer.toString(list.size()));
+        }while (list.size() == 0);
+    }
+
+    public boolean selectTimeAppoint(String strHour, String strMin){
+
+        Common.getInstance().waitForSencond(3000);
+        waitForListSize();
+        //System.out.println("The size of table view is:" + Integer.valueOf(list.size()));
         //System.out.println("****size:list[0]****" + Integer.valueOf(list.get(0).getAttribute("values").length()));
         //System.out.println("****size:list[1]****" + Integer.valueOf(list.get(1).getAttribute("values").length()));
-        Common.getInstance().waitForSencond(1500);
-        System.out.println("****list[0]****" + list.get(0).getAttribute("values"));
-        System.out.println("****list[1]****" + list.get(1).getAttribute("values"));
+        //Common.getInstance().waitForSencond(3000);
+        //System.out.println("****list[0]****" + list.get(0).getAttribute("values"));
+        //System.out.println("****list[1]****" + list.get(1).getAttribute("values"));
+        //System.out.println("****list[2]****" + list.get(2).getAttribute("values"));
         /*IOSElement eleHour = (IOSElement)driver.findElementsByClassName("UIAPickerWheel").get(0);
         eleHour.sendKeys(strHour);*/
         try {
-            list.get(0).sendKeys(strHour);
-            System.out.println("****list[0]****" + list.get(0).getAttribute("value"));
-            Common.getInstance().waitForSencond(2000);
+            /*list.get(0).sendKeys(strHour);
             list.get(1).sendKeys(strMin);
-            System.out.println("****list[1]****" + list.get(1).getAttribute("value"));
-        }catch (WebDriverException e){
+            list.get(2).sendKeys("40");*/
+            WebElement elePeriod = (WebElement) driver.findElements(By.className("UIAPickerWheel")).get(0);
+            elePeriod.sendKeys(strHour);
+            waitForListSize();
+            WebElement eleHour = (WebElement) driver.findElements(By.className("UIAPickerWheel")).get(1);
+            //System.out.println("****list[1]****" + eleHour.getAttribute("value"));
+            eleHour.sendKeys(strMin);
+            /*Common.getInstance().waitForSencond(3000);
+            WebElement eleMin = (WebElement) driver.findElements(By.className("UIAPickerWheel")).get(2);
+            eleMin.sendKeys("50");*/
+            //System.out.println("****list[0]****" + list.get(0).getAttribute("value"));
+            //System.out.println("****list[1]****" + list.get(1).getAttribute("value"));
+            //System.out.println("****list[2]****" + list.get(1).getAttribute("value"));
+        }
+        catch (WebDriverException e){
             e.printStackTrace();
             logger.error("****selectTimeAppoint****Can not config picker value!!!");
             Common.getInstance().goback(driver, 3);
             return false;
         }
-        //System.out.println("The size of table view is:" + Integer.valueOf(list.size()));
-        //IOSElement eleMin = (IOSElement)driver.findElementsByClassName("UIAPickerWheel").get(1);
-        //eleMin.sendKeys(strMin);
-        //list.get(1).sendKeys(strMin);
         return true;
     }
 }

@@ -18,13 +18,6 @@ public class HandleDEEBOT {
     private static HandleDEEBOT handleDEEBOT = null;
     private IOSDriver driver = null;
 
-    private MainPageActivity mainPageActivity = null;
-    private PersonalCenterActivity personalCenterActivity = null;
-    private MyProfileActivity myProfileActivity = null;
-    private LoginActivity loginActivity = null;
-    private SettingActivity settingActivity = null;
-    private AppointmentActivity appointmentActivity = null;
-
     private HandleDEEBOT(){
 
     }
@@ -40,33 +33,25 @@ public class HandleDEEBOT {
 
         this.driver = driver;
 
-        loginActivity = PageFactory.initElements(driver, LoginActivity.class);
-
-        mainPageActivity = PageFactory.initElements(driver, MainPageActivity.class);
-        mainPageActivity.init(driver);
-
-        personalCenterActivity = PageFactory.initElements(driver, PersonalCenterActivity.class);
-        personalCenterActivity.init(driver);
-
-        myProfileActivity = PageFactory.initElements(driver, MyProfileActivity.class);
-        myProfileActivity.init(driver);
-
+        LoginActivity.getInstance().init(driver);
+        MainPageActivity.getInstance().init(driver);
+        PersonalCenterActivity.getInstance().init(driver);
+        MyProfileActivity.getInstance().init(driver);
         XianBotUIControllerActivity.getInstance().init(driver);
-
-        settingActivity = PageFactory.initElements(driver, SettingActivity.class);
-        appointmentActivity = PageFactory.initElements(driver, AppointmentActivity.class);
+        SettingActivity.getInstance().init(driver);
+        AppointmentActivity.getInstance().init(driver);
         AppointAddActivity.getInstance().init(driver);
         AppointRepeatActivity.getInstance().init(driver);
 
     }
 //java.lang.IllegalArgumentException: Can not set io.appium.java_client.MobileElement field  to com.sun.proxy.$Proxy6
     public boolean Login(){
-        return loginActivity.loginClick() &&
-                mainPageActivity.DeviceInTableView(PropertyData.getProperty("deebot"));
+        return LoginActivity.getInstance().loginClick() &&
+                MainPageActivity.getInstance().DeviceInTableView(PropertyData.getProperty("deebot"));
     }
 
     public boolean LoadControllActivity(){
-        mainPageActivity.clickDeebot(PropertyData.getProperty("deebot"));
+        MainPageActivity.getInstance().clickDeebot(PropertyData.getProperty("deebot"));
         return XianBotUIControllerActivity.getInstance().loadControllerActivity();
     }
 
@@ -124,12 +109,12 @@ public class HandleDEEBOT {
     public boolean getHardwareVer(){
         boolean bResult = true;
         XianBotUIControllerActivity.getInstance().clickSetting();
-        if(!settingActivity.loadSettingActivity()){
+        if(!SettingActivity.getInstance().loadSettingActivity()){
             logger.error("****getHardwareVer****Can not load setting activity!!!");
             Common.getInstance().goback(driver, 1);
             bResult = false;
         }
-        if(settingActivity.getHardWareVer(PropertyData
+        if(SettingActivity.getInstance().getHardWareVer(PropertyData
                 .getProperty("hardwareVersion")).length() == 0){
             Common.getInstance().goback(driver, 1);
             bResult = false;
@@ -142,15 +127,15 @@ public class HandleDEEBOT {
 
     public boolean addTimeAppoint(){
         XianBotUIControllerActivity.getInstance().clickSetting();
-        if(!settingActivity.loadSettingActivity()){
+        if(!SettingActivity.getInstance().loadSettingActivity()){
             logger.error("****addTimeAppoint****Can not load setting activity!!!");
             return false;
         }
-        if(!settingActivity.clickTableCell(PropertyData.getProperty("timeAppoint"))){
+        if(!SettingActivity.getInstance().clickTableCell(PropertyData.getProperty("timeAppoint"))){
             logger.error("****addTimeAppoint****Can not find the cell in table view!!!");
             return false;
         }
-        appointmentActivity.clickAdd();
+        AppointmentActivity.getInstance().clickAdd();
         if(!AppointAddActivity.getInstance().selectTimeAppoint("00", "50")){
             return false;
         }
@@ -164,8 +149,8 @@ public class HandleDEEBOT {
         }
         AppointRepeatActivity.getInstance().clickBack();
         AppointAddActivity.getInstance().clickConfirm();
-        appointmentActivity.timeInTableView(Common.DATE.SUN, "14", "40");
-        appointmentActivity.clickBackSetting();
+        AppointmentActivity.getInstance().timeInTableView(Common.DATE.SUN, "14", "40");
+        AppointmentActivity.getInstance().clickBackSetting();
         driver.navigate().back();
         return XianBotUIControllerActivity.getInstance().timeAppointDisplay() &&
                 delAllTimeAppoint();
@@ -173,26 +158,26 @@ public class HandleDEEBOT {
 
     public boolean delAllTimeAppoint(){
         XianBotUIControllerActivity.getInstance().clickSetting();
-        if(!settingActivity.loadSettingActivity()){
+        if(!SettingActivity.getInstance().loadSettingActivity()){
             logger.error("****addTimeAppoint****Can not load setting activity!!!");
             return false;
         }
-        if(!settingActivity.clickTableCell(PropertyData.getProperty("timeAppoint"))){
+        if(!SettingActivity.getInstance().clickTableCell(PropertyData.getProperty("timeAppoint"))){
             logger.error("****addTimeAppoint****Can not find the cell in table view!!!");
             return false;
         }
-        appointmentActivity.clickEdit();
-        return appointmentActivity.deleTimeAppoint();
+        AppointmentActivity.getInstance().clickEdit();
+        return AppointmentActivity.getInstance().deleTimeAppoint();
     }
 
 
     public boolean Logout(IOSDriver driver){
         Common.getInstance().goback(driver, 1);
-        mainPageActivity.btnUserCenterClick();
-        if (personalCenterActivity.loadPersonalCenter()){
-            personalCenterActivity.clickDataManage();
-            if(myProfileActivity.loadMyProfile()){
-                return myProfileActivity.logOut();
+        MainPageActivity.getInstance().btnUserCenterClick();
+        if (PersonalCenterActivity.getInstance().loadPersonalCenter()){
+            PersonalCenterActivity.getInstance().clickDataManage();
+            if(MyProfileActivity.getInstance().loadMyProfile()){
+                return MyProfileActivity.getInstance().logOut();
             }else {
                 logger.error("****Logout****Can not my profile!!!");
                 return false;
