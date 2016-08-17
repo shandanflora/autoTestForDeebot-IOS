@@ -1,9 +1,12 @@
 package com.ecovacs.test.activity;
 
 import com.ecovacs.test.common.PropertyData;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -13,14 +16,36 @@ import java.util.List;
  */
 public class SettingActivity {
     ////UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]
+    private static SettingActivity settingActivity = null;
+    private IOSDriver driver = null;
+
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
     private WebElement tableView = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAStaticText[1]")
     private WebElement txtTitle = null;
 
+    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")
+    private WebElement btnBack = null;
+
+    public static SettingActivity getInstance(){
+        if(settingActivity == null){
+            settingActivity = new SettingActivity();
+        }
+        return settingActivity;
+    }
+
+    public void init(IOSDriver driver){
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.driver = driver;
+    }
+
     public boolean loadSettingActivity(){
         return txtTitle.getText().equals(PropertyData.getProperty("settingTitle"));
+    }
+
+    public void goBack(){
+        btnBack.click();
     }
 
     public boolean clickTableCell(String strCell){

@@ -2,14 +2,17 @@ package com.ecovacs.test.activity;
 
 import com.ecovacs.test.common.Common;
 import com.ecovacs.test.common.PropertyData;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +22,8 @@ import java.util.List;
 public class AppointmentActivity {
 
     private static Logger logger = LoggerFactory.getLogger(AppointmentActivity.class);
+    private static AppointmentActivity appointmentActivity = null;
+    private IOSDriver driver = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAImage[1]")
     private WebElement imageTimerNo = null;
@@ -34,6 +39,18 @@ public class AppointmentActivity {
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
     private WebElement tableViewAppoint = null;
+
+    public static AppointmentActivity getInstance(){
+        if(appointmentActivity == null){
+            appointmentActivity = new AppointmentActivity();
+        }
+        return appointmentActivity;
+    }
+
+    public void init(IOSDriver driver){
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.driver = driver;
+    }
 
     public boolean loadAppointActivityTimeNo(){
         boolean bResult = false;
@@ -56,7 +73,7 @@ public class AppointmentActivity {
         return bResult;
     }
 
-    public int tableViewRountCount(){
+    /*public int tableViewRountCount(){
         List<WebElement> cellList = new ArrayList<WebElement>();
         int iLoop = 0;
         while(cellList.size() == 0){
@@ -68,7 +85,7 @@ public class AppointmentActivity {
             cellList = tableViewAppoint.findElements(By.className("UIATableCell"));
         }
         return cellList.size();
-    }
+    }*/
 
 
     public void clickAdd(){
@@ -109,7 +126,9 @@ public class AppointmentActivity {
             }
             cellList = tableViewAppoint.findElements(By.className("UIATableCell"));
         }
-        return loadAppointActivityTimeNo();
+        boolean bResult = loadAppointActivityTimeNo();
+        Common.getInstance().goback(driver, 2);
+        return bResult;
     }
 
     public void clickBackSetting(){

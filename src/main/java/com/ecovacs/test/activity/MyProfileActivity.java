@@ -2,10 +2,12 @@ package com.ecovacs.test.activity;
 
 import com.ecovacs.test.common.PropertyData;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +22,7 @@ public class MyProfileActivity {
 
     private static Logger logger = LoggerFactory.getLogger(MyProfileActivity.class);
     private IOSDriver driver = null;
+    private static MyProfileActivity myProfileActivity = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAButton[1]")
     private WebElement btnLogOut = null;
@@ -30,12 +33,24 @@ public class MyProfileActivity {
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
     private WebElement tableViewData = null;
 
+    private MyProfileActivity(){
+
+    }
+
+    public static MyProfileActivity getInstance(){
+        if(myProfileActivity == null){
+            myProfileActivity = new MyProfileActivity();
+        }
+        return myProfileActivity;
+    }
+
     public boolean loadMyProfile(){
         return getPhoneNumber().length() > 0;
     }
 
     public void init(IOSDriver driver){
         this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     /**

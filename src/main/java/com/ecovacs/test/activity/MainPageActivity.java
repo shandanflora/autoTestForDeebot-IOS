@@ -1,10 +1,12 @@
 package com.ecovacs.test.activity;
 
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,15 +21,27 @@ public class MainPageActivity {
 
     private static Logger logger = LoggerFactory.getLogger(MainPageActivity.class);
     private IOSDriver driver;
-
+    private static MainPageActivity mainPageActivity = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
     private WebElement tableview = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[5]")
     private WebElement btnUserDetail = null;
 
+    private MainPageActivity(){
+
+    }
+
+    public static MainPageActivity getInstance(){
+        if(mainPageActivity == null){
+            mainPageActivity = new MainPageActivity();
+        }
+        return mainPageActivity;
+    }
+
     public void init(IOSDriver driver){
         this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     /**

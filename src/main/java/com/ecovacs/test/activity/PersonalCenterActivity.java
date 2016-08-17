@@ -1,9 +1,11 @@
 package com.ecovacs.test.activity;
 
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class PersonalCenterActivity {
 
     private static Logger logger = LoggerFactory.getLogger(PersonalCenterActivity.class);
-
+    private static PersonalCenterActivity personalCenterActivity = null;
     private IOSDriver driver = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAStaticText[4]")
@@ -23,8 +25,20 @@ public class PersonalCenterActivity {
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIAButton[1]")
     private WebElement btnDataManage = null;
 
+    private PersonalCenterActivity(){
+
+    }
+
+    public static PersonalCenterActivity getInstance(){
+        if(personalCenterActivity == null){
+            personalCenterActivity = new PersonalCenterActivity();
+        }
+        return personalCenterActivity;
+    }
+
     public void init(IOSDriver driver){
         this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     /**

@@ -5,8 +5,11 @@ import com.ecovacs.test.common.PropertyData;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -17,10 +20,13 @@ import java.util.List;
 public class AppointRepeatActivity {
 
     private static AppointRepeatActivity appointRepeatActivity = null;
+    private static Logger logger = LoggerFactory.getLogger(AppointRepeatActivity.class);
     @FindBy(xpath = " //UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")
     private MobileElement btnBack = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATableView[1]")
     private MobileElement tableView = null;
+    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAStaticText[1]")
+    private MobileElement txtTitle = null;
 
     //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[8]/UIAStaticText[1]
 
@@ -33,6 +39,20 @@ public class AppointRepeatActivity {
 
     public void init(IOSDriver driver){
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    }
+
+    public boolean loadAppointRepeatActivity(){
+        boolean bResult = false;
+        int iLoop = 0;
+        while (!bResult){
+            bResult = txtTitle.getText().trim().equals(PropertyData.getProperty("repeat"));
+            iLoop++;
+            if(iLoop > 20){
+                break;
+            }
+        }
+        logger.info("****clickRepeat****" + txtTitle.getText());
+        return bResult;
     }
 
     private String getStrDate(Common.DATE date){
@@ -79,6 +99,7 @@ public class AppointRepeatActivity {
             if(txt.getText().trim().equals(getStrDate(date))){
                 cellList.get(i).click();
                 bResult = true;
+                break;
             }
         }
         return bResult;
