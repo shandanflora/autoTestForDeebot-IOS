@@ -18,7 +18,7 @@ public class LoginActivity {
 
     private static Logger logger = LoggerFactory.getLogger(LoginActivity.class);
     private static LoginActivity loginActivity = null;
-    private IOSDriver driver = null;
+    //private IOSDriver driver = null;
 
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
     private WebElement btnWelcomeLogin = null;
@@ -44,7 +44,7 @@ public class LoginActivity {
 
     public void init(IOSDriver driver){
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        this.driver = driver;
+        //this.driver = driver;
     }
 
     public boolean loginClick(){

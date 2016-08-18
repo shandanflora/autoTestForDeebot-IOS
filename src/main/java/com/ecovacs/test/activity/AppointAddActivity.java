@@ -25,8 +25,8 @@ public class AppointAddActivity {
     private IOSDriver driver = null;
     private static Logger logger = LoggerFactory.getLogger(AppointAddActivity.class);
 
-    @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")
-    private MobileElement btnBack = null;
+    /*@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")
+    private MobileElement btnBack = null;*/
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]")
     private MobileElement btnConfirm = null;
 
@@ -67,9 +67,9 @@ public class AppointAddActivity {
         btnConfirm.click();
     }
 
-    public void clickBack(){
+    /*public void clickBack(){
         btnBack.click();
-    }
+    }*/
 
     /*private String periodToStr(Common.PERIOD period){
         String strPeriod = "";
