@@ -13,10 +13,12 @@
                     <exclude name="testStandardBorderClean"></exclude>
                     <exclude name="testStandardFixedClean"></exclude>
                     <exclude name="testStandardChargeClean"></exclude>
-                    <include name="testManualCleanTop"></include>
+                    <exclude name="testManualCleanTop"></exclude>
                     <exclude name="testManualCleanBottom"></exclude>
                     <exclude name="testManualCleanLeft"></exclude>
                     <exclude name="testManualCleanRight"></exclude>
+                    <exclude name="testGetHardwareVer"></exclude>
+                    <include name="testTimeAppoint"></include>
                     <include name="testLogout"></include>
                 </methods>
             </class>
