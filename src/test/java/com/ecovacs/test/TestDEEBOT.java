@@ -27,8 +27,6 @@ public class TestDEEBOT /*extends AbstractTestNGSpringContextTests*/{
 
     @BeforeClass
     public void setUp(){
-        /*String strPath = getClass().getResource("/").getPath();
-        strPath = strPath + "../";*/
         driver = Common.getInstance().getDriver();
         if(driver == null){
             return;
@@ -108,6 +106,7 @@ public class TestDEEBOT /*extends AbstractTestNGSpringContextTests*/{
 
     @AfterClass
     public void tearDown(){
+        HandleDEEBOT.getInstance().senEmail();
         driver.quit();
     }
 }

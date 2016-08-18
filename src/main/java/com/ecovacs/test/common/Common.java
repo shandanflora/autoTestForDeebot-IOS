@@ -36,10 +36,10 @@ public class Common {
         SAT
     }
 
-    public enum PERIOD{
+    /*public enum PERIOD{
         AM,
         PM
-    }
+    }*/
 
     public static Common getInstance(){
         if(common == null){
@@ -77,6 +77,9 @@ public class Common {
         File file = new File(path);
         File temp;
             String[] tempList = file.list();
+            if(tempList == null){
+                return false;
+            }
             for(String strFile:tempList){
                 if (path.endsWith(File.separator)) {
                     temp = new File(path + strFile);
@@ -126,8 +129,8 @@ public class Common {
     }
 
     public enum Direction {
-        UP,
-        DOWN,
+        //UP,
+        //DOWN,
         LEFT,
         RIGHT
     }
@@ -160,7 +163,7 @@ public class Common {
         }
     }
 
-    public void swipeTimePicker(IOSDriver driver, MobileElement mobileEle, Direction direction){
+    /*public void swipeTimePicker(IOSDriver driver, MobileElement mobileEle, Direction direction){
         Point start = mobileEle.getLocation();
         int startX = start.x;
         int startY = start.y;
@@ -185,6 +188,6 @@ public class Common {
                 break;
 
         }
-    }
+    }*/
 
 }

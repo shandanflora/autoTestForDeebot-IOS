@@ -19,6 +19,7 @@
         <selendroid.version>0.17.0</selendroid.version>
         <springframework.version>4.1.5.RELEASE</springframework.version>
         <org.aspectj.version>1.6.12</org.aspectj.version>
+        <mail.version>1.5.5</mail.version>
         <!-- 文件拷贝时的编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -33,7 +34,15 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+
+      <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+      <dependency>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>javax.mail</artifactId>
+          <version>${mail.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
     <dependency>
       <groupId>io.appium</groupId>
       <artifactId>java-client</artifactId>
