@@ -2,12 +2,11 @@ package com.ecovacs.test;
 
 import com.ecovacs.test.activity.*;
 import com.ecovacs.test.common.Common;
-import com.ecovacs.test.common.MailSender;
 import com.ecovacs.test.common.PropertyData;
-import com.ecovacs.test.common.ZipUtil;
 import io.appium.java_client.ios.IOSDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 /**
  * Created by ecosqa on 16/7/26.
@@ -169,42 +168,6 @@ public class HandleDEEBOT {
         }
         AppointmentActivity.getInstance().clickEdit();
         return AppointmentActivity.getInstance().deleTimeAppoint();
-    }
-
-    private String compressReport(){
-        String strPath = "";
-        String strZipPath = "";
-        boolean bResult = false;
-        try {
-            strZipPath = getClass().getResource("/").getPath() + "../";
-            String strSrcPath = strZipPath + "surefire-reports/html";
-            bResult = ZipUtil.zip(strSrcPath, strZipPath, "zipReport.zip");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        if (bResult){
-            strPath = strZipPath + "/" + "zipReport.zip";
-        }else {
-            logger.error("****compressReport****Compress report failed!!!");
-        }
-        return strPath;
-    }
-
-    public boolean senEmail(){
-        String strZipPath = compressReport();
-        if(strZipPath.length() == 0){
-            return false;
-        }
-        //smtp.sina.com
-        String smtp = PropertyData.getProperty("mail-smtp");
-        String from = PropertyData.getProperty("mail-from");
-        String to = PropertyData.getProperty("mail-to");
-        String subject = "test";
-        String content = "test content";
-        String username = PropertyData.getProperty("mail-username");
-        String password = PropertyData.getProperty("mail-password");
-
-        return MailSender.sendAndCcAndAttach(smtp, from, to, "", subject, content, username, password, strZipPath);
     }
 
     public boolean Logout(IOSDriver driver){

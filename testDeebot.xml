@@ -7,7 +7,7 @@
             <class name="com.ecovacs.test.TestDEEBOT">
                 <methods>
                     <include name="testLogin"></include>
-                    <include name="testLoadControllActivity"></include>
+                    <exclude name="testLoadControllActivity"></exclude>
                     <exclude name="testStandardAutoClean"></exclude>
                     <exclude name="testStandardSingleClean"></exclude>
                     <exclude name="testStandardBorderClean"></exclude>
@@ -18,8 +18,8 @@
                     <exclude name="testManualCleanLeft"></exclude>
                     <exclude name="testManualCleanRight"></exclude>
                     <exclude name="testGetHardwareVer"></exclude>
-                    <include name="testTimeAppoint"></include>
-                    <include name="testLogout"></include>
+                    <exclude name="testTimeAppoint"></exclude>
+                    <exclude name="testLogout"></exclude>
                 </methods>
             </class>
         </classes>

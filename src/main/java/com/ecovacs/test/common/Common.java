@@ -189,5 +189,23 @@ public class Common {
 
         }
     }*/
+    private boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            if(children == null){
+                return false;
+            }
+            //recursion delete subfolder
+            for(String strFile:children) {
+                boolean success = deleteDir(new File(dir, strFile));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        //delete empty folder or file
+        return dir.delete();
+    }
+
 
 }

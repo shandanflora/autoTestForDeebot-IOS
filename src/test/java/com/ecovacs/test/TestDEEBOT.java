@@ -43,70 +43,69 @@ public class TestDEEBOT /*extends AbstractTestNGSpringContextTests*/{
     public void testLoadControllActivity() {
         Assert.assertTrue(HandleDEEBOT.getInstance().LoadControllActivity());
     }
+/*
+        @Test(priority = 3)
+        public void testStandardAutoClean() {
+            Assert.assertTrue(HandleDEEBOT.getInstance().standardAutoClean());
+        }
 
-    /*@Test(priority = 3)
-    public void testStandardAutoClean() {
-        Assert.assertTrue(HandleDEEBOT.getInstance().standardAutoClean());
-    }
+        @Test(priority = 4)
+        public void testStandardSingleClean(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().standardSingleClean());
+        }
 
-    @Test(priority = 4)
-    public void testStandardSingleClean(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().standardSingleClean());
-    }
+        @Test(priority = 5)
+        public void testStandardBorderClean(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().standardBorderClean());
+        }
 
-    @Test(priority = 5)
-    public void testStandardBorderClean(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().standardBorderClean());
-    }
+        @Test(priority = 6)
+        public void testStandardFixedClean(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().standardFixedClean());
+        }
 
-    @Test(priority = 6)
-    public void testStandardFixedClean(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().standardFixedClean());
-    }
+        @Test(priority = 7)
+        public void testStandardChargeClean(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().standardChargeClean());
+        }
 
-    @Test(priority = 7)
-    public void testStandardChargeClean(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().standardChargeClean());
-    }
+        @Test(priority = 9)
+        public void testManualCleanTop(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanTop());
+        }
 
-    @Test(priority = 9)
-    public void testManualCleanTop(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanTop());
-    }
+        @Test(priority = 10)
+        public void testManualCleanBottom(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanBottom());
+        }
 
-    @Test(priority = 10)
-    public void testManualCleanBottom(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanBottom());
-    }
+        @Test(priority = 11)
+        public void testManualCleanLeft(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanLeft());
+        }
 
-    @Test(priority = 11)
-    public void testManualCleanLeft(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanLeft());
-    }
+        @Test(priority = 12)
+        public void testManualCleanRight(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanRight());
+        }
 
-    @Test(priority = 12)
-    public void testManualCleanRight(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().manualCleanRight());
-    }
+        @Test(priority = 13)
+        public void testGetHardwareVer(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().getHardwareVer());
+        }
 
-    @Test(priority = 13)
-    public void testGetHardwareVer(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().getHardwareVer());
-    }
+        @Test(priority = 14)
+        public void testTimeAppoint(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().addTimeAppoint());
+        }
 */
-    @Test(priority = 14)
-    public void testTimeAppoint(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().addTimeAppoint());
-    }
-
-    @Test(priority = 100)
-    public void testLogout(){
-        Assert.assertTrue(HandleDEEBOT.getInstance().Logout(driver));
-    }
+        @Test(priority = 100)
+        public void testLogout(){
+            Assert.assertTrue(HandleDEEBOT.getInstance().Logout(driver));
+        }
 
     @AfterClass
     public void tearDown(){
-        HandleDEEBOT.getInstance().senEmail();
         driver.quit();
     }
 }

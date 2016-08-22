@@ -96,6 +96,7 @@ public class XianBotUIControllerActivity {
                     break;
                 }
             }
+            Common.getInstance().screenShot("loadControllerActivity.png", driver);
             return !bSleep;
         }
         else{
