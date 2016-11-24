@@ -19,7 +19,6 @@ public class LoginActivity {
     private static Logger logger = LoggerFactory.getLogger(LoginActivity.class);
     private static LoginActivity loginActivity = null;
     //private IOSDriver driver = null;
-
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
     private WebElement btnWelcomeLogin = null;
     @FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")
